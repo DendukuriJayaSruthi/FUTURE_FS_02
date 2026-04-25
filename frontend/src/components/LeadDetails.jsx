@@ -7,10 +7,6 @@ export default function LeadDetails({ lead, onClose, onUpdate }) {
   const [newNote, setNewNote] = useState('');
   const [updating, setUpdating] = useState(false);
 
-  useEffect(() => {
-    fetchNotes();
-  }, [lead.id]);
-
   const fetchNotes = async () => {
     try {
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
@@ -23,6 +19,11 @@ export default function LeadDetails({ lead, onClose, onUpdate }) {
       console.error('Failed to fetch notes', err);
     }
   };
+
+  useEffect(() => {
+    fetchNotes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lead.id]);
 
   const handleStatusChange = async (newStatus) => {
     setStatus(newStatus);

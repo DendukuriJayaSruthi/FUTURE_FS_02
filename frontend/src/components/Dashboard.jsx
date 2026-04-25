@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, Users, LogOut, Code } from 'lucide-react';
 import LeadList from './LeadList';

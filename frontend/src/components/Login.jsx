@@ -31,7 +31,7 @@ export default function Login({ setAuth }) {
       } else {
         setError(data.error || 'Login failed');
       }
-    } catch (err) {
+    } catch (_err) {
       setError('Cannot connect to server. Ensure backend is running.');
     } finally {
       setLoading(false);
