@@ -21,6 +21,7 @@ export default function LeadDetails({ lead, onClose, onUpdate }) {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchNotes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lead.id]);
