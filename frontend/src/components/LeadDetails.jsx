@@ -13,7 +13,8 @@ export default function LeadDetails({ lead, onClose, onUpdate }) {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/leads/${lead.id}/notes`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${API_URL}/api/leads/${lead.id}/notes`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await response.json();
@@ -26,7 +27,8 @@ export default function LeadDetails({ lead, onClose, onUpdate }) {
   const handleStatusChange = async (newStatus) => {
     setStatus(newStatus);
     try {
-      await fetch(`http://localhost:5000/api/leads/${lead.id}/status`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      await fetch(`${API_URL}/api/leads/${lead.id}/status`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -46,7 +48,8 @@ export default function LeadDetails({ lead, onClose, onUpdate }) {
 
     setUpdating(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/leads/${lead.id}/notes`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${API_URL}/api/leads/${lead.id}/notes`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
